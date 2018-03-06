@@ -63,7 +63,7 @@ FrameSequence_gif::FrameSequence_gif(Stream* stream) :
 
     if (DGifSlurp(mGif) != GIF_OK) {
         ALOGW("Gif slurp failed");
-        DGifCloseFile(mGif, NULL);
+        DGifCloseFile(mGif);
         mGif = NULL;
         return;
     }
@@ -132,7 +132,7 @@ FrameSequence_gif::FrameSequence_gif(Stream* stream) :
 
 FrameSequence_gif::~FrameSequence_gif() {
     if (mGif) {
-        DGifCloseFile(mGif, NULL);
+        DGifCloseFile(mGif);
     }
     delete[] mPreservedFrames;
     delete[] mRestoringFrames;
